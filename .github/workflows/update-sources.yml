@@ -1,0 +1,32 @@
+name: Update sources
+
+on:
+  schedule:
+    - cron: "0 9 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-sources:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Refresh sources
+        run: sh scripts/sync-upstream-skills.sh
+
+      - name: Create update pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: chore/update-sources
+          delete-branch: true
+          commit-message: "chore: update skills"
+          title: "chore: update skills"
+          body: Automated weekly refresh of configured skill sources.

@@ -1,0 +1,14 @@
+[
+  {
+    "name": "unslop",
+    "repository": "https://github.com/backnotprop/pstack.git",
+    "sourcePath": "skills/unslop",
+    "destinationPath": "unslop"
+  },
+  {
+    "name": "anthropic-doc-coauthoring",
+    "repository": "https://github.com/anthropics/skills.git",
+    "sourcePath": "skills/doc-coauthoring",
+    "destinationPath": "doc-coauthoring"
+  }
+]
